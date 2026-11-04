@@ -34,3 +34,11 @@
 - TODO：整合舊CellGame原型與GameSession、實作七種AI/六種攻擊的Runtime、四類技能抽選與創傷技能恢復、六關資料、HUD、美術、存檔。
 - BLOCKED_EXTERNAL：Unity授權/Actions實際編譯、Android手機安裝驗收。
 - 下一個工作：核實並修正Unity建置設定，啟動Actions取得第一份實際編譯日誌；同時可繼續實作不依賴授權的Runtime。
+
+## 2026-11-04 P0/P1 實際執行（第二批）
+- DONE_VERIFIED（GitHub證據）：Actions run #41840030642 已執行且失敗；日誌明確指出缺少Unity授權檔/序號，未進入C#編譯。
+- DONE_VERIFIED（僅Git提交）：新增 ProjectileRuntime、PlayerDamageReceiver、EnemyRuntime、AttackPattern、.gitignore。
+- DONE_UNVERIFIED：敵人運動/母體事件、追蹤彈、彈道方向與受傷接收器原始碼；尚未與場景Prefab完整連接，也未Unity編譯。
+- BLOCKED_EXTERNAL：Unity授權Secrets配置；參考 https://github.com/SunTung/CELL-DEFENDER/actions/runs/41840030642
+- TODO：完整六種攻擊生成器（目前僅彈道基礎）、七種敵人完整AI、生成上限、投射物池、正式UI與觸控。
+- 下一步：修正Unity版本與專案建置設定；將GameSession、EnemyRuntime及ProjectileRuntime接入可玩場景；等待Unity授權配置後重跑Actions。
