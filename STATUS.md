@@ -27,3 +27,10 @@
 - IN_PROGRESS：正在實作。
 - BLOCKED_EXTERNAL：需外部授權、裝置或權限；不阻止其他獨立工作。
 - TODO：尚未開始。
+
+## 2026-11-04 框架增量
+- DONE_VERIFIED（僅提交存在）：新增8個C#架構檔與 docs/FRAMEWORK_ARCHITECTURE.md。
+- DONE_UNVERIFIED：Core/GameSession、DamageSystem、ProgressionSystem、PickupSystem、AttackDefinition、EnemyDefinition、StageDefinition；未經Unity編譯或實機驗收。
+- TODO：整合舊CellGame原型與GameSession、實作七種AI/六種攻擊的Runtime、四類技能抽選與創傷技能恢復、六關資料、HUD、美術、存檔。
+- BLOCKED_EXTERNAL：Unity授權/Actions實際編譯、Android手機安裝驗收。
+- 下一個工作：核實並修正Unity建置設定，啟動Actions取得第一份實際編譯日誌；同時可繼續實作不依賴授權的Runtime。
