@@ -20,6 +20,7 @@ namespace CellDefender {
    if(cooldown<=0 && shotPrefab!=null){
     cooldown=shotInterval;
     var go=Instantiate(shotPrefab,transform.position+Vector3.up*0.5f,Quaternion.identity);
+    go.SetActive(true);
     var projectile=go.GetComponent<ProjectileRuntime>();
     if(projectile!=null){projectile.hostile=false;projectile.velocity=Vector2.up*shotSpeed;}
    }
