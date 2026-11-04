@@ -5,3 +5,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 enable_testing()
 add_executable(cell_defender_rules main.cpp)
 add_test(NAME cell_defender_rules COMMAND cell_defender_rules)
+
+add_executable(touch_adapter_test touch_adapter_test.cpp)
+add_test(NAME touch_adapter_test COMMAND touch_adapter_test)
