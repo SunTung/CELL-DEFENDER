@@ -24,7 +24,10 @@ namespace CellDefender {
   }
   public void CollectEnergy(int amount){
    if(phase!=GamePhase.Playing)return;
-   if(ProgressionSystem.AddEnergy(player,amount)){phase=GamePhase.SkillChoice;Time.timeScale=0f;}
+   if(ProgressionSystem.AddEnergy(player,amount)){
+    // Temporary auto-upgrade until the three-choice UI is implemented.
+    for(int i=0;i<4;i++)if(ProgressionSystem.UpgradeSkill(player,(SkillKind)i))break;
+   }
   }
   public void TakeDamage(int damage){
    if(phase!=GamePhase.Playing)return;
