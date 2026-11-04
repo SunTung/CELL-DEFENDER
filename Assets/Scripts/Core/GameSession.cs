@@ -22,6 +22,10 @@ namespace CellDefender {
    if(phase!=GamePhase.SkillChoice)return;
    if(ProgressionSystem.UpgradeSkill(player,kind)){phase=GamePhase.Playing;Time.timeScale=1f;}
   }
+  public void CollectEnergy(int amount){
+   if(phase!=GamePhase.Playing)return;
+   if(ProgressionSystem.AddEnergy(player,amount)){phase=GamePhase.SkillChoice;Time.timeScale=0f;}
+  }
   public void TakeDamage(int damage){
    if(phase!=GamePhase.Playing)return;
    DamageSystem.Apply(player,damage);
