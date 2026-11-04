@@ -58,3 +58,11 @@
 - DONE_UNVERIFIED：上述程式碼已提交，但尚未Unity編譯；場景暫用Editor動態Sprite，資產序列化與渲染仍需實際驗證或改用持久資產。
 - BLOCKED_EXTERNAL：Unity授權Secrets未配置；需要使用者在GitHub Settings → Secrets and variables → Actions處理。不能提交授權密碼或序號至Git。
 - 下一步：取得授權後執行Actions；依實際編譯日誌修復；接著完成場景持久Sprite、UI、技能選擇與道具實體。
+
+## 2026-11-04 P1 推進：技能選擇、HUD、持久Sprite
+- 已提交 GameSession：從未滿級的四類技能中隨機抽取最多3項，進入SkillChoice時暫停，選取後恢復；移除暫時性自動加點。
+- 已提交 GameHud：OnGUI 9:16適配比例、HP/護罩/能量/關卡、三選一、暫停/恢復、GameOver/重開介面。
+- 已提交 CreateGame：在Editor產生 Assets/Generated/pixel.png，經TextureImporter設定Sprite/Point後以持久Asset引用進入場景；場景新增HUD。
+- DONE_UNVERIFIED：GitHub原始碼提交已成功，尚未Unity編譯或Android實機驗證。
+- 已知待修：角色重新開始時場上敵人/子彈未清空；完整技能效果、敵人母體生怪、六種攻擊全行為、波次關卡資料、音效與存檔仍待做。
+- BLOCKED_EXTERNAL：Actions Unity License尚未配置，先前run 41840030642的實際錯誤是Missing Unity License。
