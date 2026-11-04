@@ -49,3 +49,12 @@
 - GameSession.cs 增加 CollectEnergy(int) 接口，供敵人死亡掉落能量使用。
 - DONE_UNVERIFIED：以上原始碼已提交，未完成Unity編譯/手機測試。
 - TODO：將ProjectileRuntime與EnemyRuntime的實際API整合，建立Prefab/Scene/波次資料與六種武器策略；修復Actions建置。
+
+## 2026-11-04 後續建構
+- 已取得 Actions job 126608859094 完整日誌：根因是 Unity License / Serial 缺失；並非已證明場景編譯錯誤。
+- 已新增 RuntimeBootstrap；CreateGame 改為產生 Camera、GameSession、Player、敵人/子彈模板及RuntimeBootstrap。
+- EnemyRuntime/ProjectileRuntime 已整合基本移動、射擊、碰撞、死亡獎勵；七種AI仍有未完成能力，六種攻擊尚非完整獨立策略。
+- 修正玩家子彈模板實例啟用、BuildAndroid UnityEditor.Build namespace、Unity版本檔移除未核實revision、Actions增加授權預檢。
+- DONE_UNVERIFIED：上述程式碼已提交，但尚未Unity編譯；場景暫用Editor動態Sprite，資產序列化與渲染仍需實際驗證或改用持久資產。
+- BLOCKED_EXTERNAL：Unity授權Secrets未配置；需要使用者在GitHub Settings → Secrets and variables → Actions處理。不能提交授權密碼或序號至Git。
+- 下一步：取得授權後執行Actions；依實際編譯日誌修復；接著完成場景持久Sprite、UI、技能選擇與道具實體。
