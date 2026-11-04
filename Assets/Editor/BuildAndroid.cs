@@ -6,6 +6,7 @@ using UnityEngine;
 
 public static class BuildAndroid {
     public static void Build() {
+        CreateGame.Generate();
         Directory.CreateDirectory("build/Android");
         PlayerSettings.productName = "CELL DEFENDER";
         PlayerSettings.companyName = "SunTung";
