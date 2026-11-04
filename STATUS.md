@@ -42,3 +42,10 @@
 - BLOCKED_EXTERNAL：Unity授權Secrets配置；參考 https://github.com/SunTung/CELL-DEFENDER/actions/runs/41840030642
 - TODO：完整六種攻擊生成器（目前僅彈道基礎）、七種敵人完整AI、生成上限、投射物池、正式UI與觸控。
 - 下一步：修正Unity版本與專案建置設定；將GameSession、EnemyRuntime及ProjectileRuntime接入可玩場景；等待Unity授權配置後重跑Actions。
+
+## 2026-11-04 執行續報
+- 已查到Actions run 41840030642：失敗於Generate scene，後續Build APK及Artifact跳過；目前僅確認步驟級錯誤，未取得詳細日誌。
+- 新增 PlayerRuntime.cs 與 WaveSpawner.cs；既有 ProjectileRuntime.cs、EnemyRuntime.cs 已存在，因此保留現有版本，不覆蓋。
+- GameSession.cs 增加 CollectEnergy(int) 接口，供敵人死亡掉落能量使用。
+- DONE_UNVERIFIED：以上原始碼已提交，未完成Unity編譯/手機測試。
+- TODO：將ProjectileRuntime與EnemyRuntime的實際API整合，建立Prefab/Scene/波次資料與六種武器策略；修復Actions建置。
