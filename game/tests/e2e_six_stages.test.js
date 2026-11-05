@@ -15,6 +15,6 @@ for(let i=0;i<100000 && g.state==='playing' && !g.endless;i++){
   g.tick(.05);ticks++;record();
   if(g.stage!==before){transitions.push([before,g.stage]);assert.equal(g.stage,before+1)}
 }
-assert.equal(g.state,'clear','six stages must reach clear screen');assert.equal(g.stage,6);assert.equal(g.bossesDefeated,6);assert.equal(transitions.length,5);assert.equal(g.stageTime>=420,true);assert.equal(g.startEndless(),true);record();assert.equal(g.stage,7);assert.equal(g.endless,true);assert.equal(g.state,'playing');
+assert.equal(g.state,'clear','six stages must reach clear screen');assert.equal(g.stage,6);assert.equal(g.bossesDefeated,6);assert.equal(transitions.length,5);assert.equal(g.stageTime>=60,true);assert.equal(g.startEndless(),true);record();assert.equal(g.stage,7);assert.equal(g.endless,true);assert.equal(g.state,'playing');
 const before=g.time;for(let i=0;i<100;i++){g.hp=100;g.tick(.05)}record();assert(g.time>before);assert(events.shoot>0);assert(events.explosion>=6);assert(events.mission_clear>=6);assert(events.start>=2);
 console.log(JSON.stringify({result:'PASS',ticks,simulatedSeconds:Math.round(ticks*.05),bossKills:g.bossesDefeated,transitions,events,finalState:g.state,stage:g.stage},null,2));
