@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict');
 const {Game,ENEMY_TYPES,STAGE_ENEMIES}=require('../web/game.js');
 assert.equal(ENEMY_TYPES.length,6);assert.equal(STAGE_ENEMIES.length,6);
-const g=new Game(()=>.5);g.start();g.upgrade('clone');g.upgrade('clone');g.tick(.05);
+const g=new Game(()=>.5);g.start();g.pendingUpgrades=2;g.upgrade('clone');g.upgrade('clone');g.tick(.05);
 for(let i=0;i<18;i++)g.tick(.05);
 assert.ok(g.bullets.some(b=>b.clone),'clones produce bullets');
 g.spawn('boss');g.bossFireClock=1.2;g.tick(.05);
