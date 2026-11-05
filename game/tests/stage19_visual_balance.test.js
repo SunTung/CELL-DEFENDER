@@ -1,0 +1,5 @@
+const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');const {Game}=require('../web/game.js');
+const g=new Game(()=>.5);g.start();assert.equal(g.upgrade('clone'),false);g.pendingUpgrades=2;assert(g.upgrade('defense'));assert.equal(g.shield,3);assert(g.upgrade('beam'));g.beam();assert(g.beamVisualTime>0);for(let i=0;i<5;i++)g.tick(.05);assert.equal(g.beamVisualTime,0);
+const xp=[];for(let i=0;i<7;i++){g.xp=g.nextLevelXp;g.defeat({hp:0,dead:false,type:'strafe'});xp.push(g.nextLevelXp);}assert(xp.every((v,i)=>i===0||v>xp[i-1]));
+const a=new Game(()=>.5),b=new Game(()=>.5);a.start();b.start();a.stage=1;b.stage=6;a.spawn('armored');b.spawn('armored');a.tick(.05);b.tick(.05);assert(Math.abs((b.enemies[0].y+20)/(a.enemies[0].y+20)-1.8)<.0001);
+const html=fs.readFileSync(path.join(__dirname,'../web/index.html'),'utf8');assert(html.includes('if(g.shield>0)'));assert(html.includes('if(g.beamVisualTime>0)'));assert(html.includes("'#ff4ff0'"));console.log('STAGE19 visual shield/beam, XP curve, speed 1.8 PASS');
