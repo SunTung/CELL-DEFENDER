@@ -15,7 +15,7 @@ def png(path,w,h,seed):
             ring=abs(math.hypot(dx,dy)-.57)<.018
             spark=((x*17+y*31+seed*101)%223)<2
             a=max(0,1-math.hypot(dx,dy))
-            line.extend((int(5+23*a+45*ring),int(15+70*a+85*ring+50*spark),int(35+100*a+90*ring+80*spark),255))
+            line.extend((int(5+23*a+45*ring),int(15+70*a+85*ring+50*spark),min(255,int(35+100*a+90*ring+80*spark)),255))
         rows.append(bytes(line))
     raw=zlib.compress(b''.join(rows),9)
     def chunk(tag,data):return struct.pack('>I',len(data))+tag+data+struct.pack('>I',zlib.crc32(tag+data)&0xffffffff)
