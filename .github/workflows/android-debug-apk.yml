@@ -51,15 +51,19 @@ jobs:
       - name: Install Android SDK packages
         run: |
           echo "ANDROID_HOME=$ANDROID_HOME"
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          test -n "$ANDROID_HOME"
+          test -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" || command -v sdkmanager
+          sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+          test -f "$ANDROID_HOME/platforms/android-35/android.jar"
       - name: Generate missing image and audio resources
         run: |
           python3 scripts/generate_fallback_assets.py
           python3 scripts/validate_generated_resources.py
       - name: Compile debug APK
         working-directory: android
-        run: gradle --no-daemon assembleDebug
+        run: |
+          set -o pipefail
+          gradle --no-daemon --stacktrace assembleDebug 2>&1 | tee ../gradle-build.log
       - name: Verify and hash APK
         run: |
           test -s android/app/build/outputs/apk/debug/app-debug.apk
@@ -72,3 +76,4 @@ jobs:
           path: |
             android/app/build/outputs/apk/debug/*.apk
             android/apk.sha256
+            gradle-build.log
