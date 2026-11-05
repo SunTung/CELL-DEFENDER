@@ -34,8 +34,8 @@ class Game{
  for(const b of this.bullets){if(b.y<0)continue;for(const e of this.enemies){if(!e.dead&&Math.hypot(b.x-e.x,b.y-e.y)<e.r+4){e.hp-=b.damage;b.y=-999;this.emit('bullet');this.defeat(e);break;}}}
  this.bullets=this.bullets.filter(b=>b.y>-30);const kept=[];for(const e of this.enemies){if(e.dead)continue;if(e.y>660){this.hurt(10);continue;}if(e.type!=='boss'&&Math.hypot(e.x-this.player.x,e.y-this.player.y)<e.r+13){this.hurt(15);continue;}kept.push(e);}this.enemies=kept;
  if(this.state!=='playing')return;
- if(this.stageTime>=390&&!this.bossSpawned){this.spawn('boss');this.bossSpawned=true;}
- if(this.stageTime>=420&&this.bossSpawned&&!this.enemies.some(e=>e.type==='boss'&&!e.dead)){if(this.stage===6&&!this.endless){this.state='clear';this.emit('clear');}else this.nextStage();}
+ if(this.stageTime>=50&&!this.bossSpawned){this.spawn('boss');this.bossSpawned=true;}
+ if(this.stageTime>=60&&this.bossSpawned&&!this.enemies.some(e=>e.type==='boss'&&!e.dead)){if(this.stage===6&&!this.endless){this.state='clear';this.emit('clear');}else this.nextStage();}
  }
 }
 return {Game,SOUNDS,STAGES,SKILLS,ENEMY_TYPES,STAGE_ENEMIES};
