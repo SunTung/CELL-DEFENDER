@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict');const {Game,STAGES}=require('../web/game.js');
 assert.equal(STAGES.length,6);
 let sounds=[];const g=new Game(()=>0.5);g.menu();g.start();sounds.push(...g.drain());
-assert.equal(g.state,'playing');assert.equal(g.stage,1);
+assert.equal(g.state,'playing');assert.equal(g.stage,1);assert.equal(g.upgrade('clone'),false,'upgrades require earned level');g.pendingUpgrades=24;
 for(const skill of ['bullet','beam','defense','clone']){for(let i=0;i<6;i++)assert.equal(g.upgrade(skill),true);assert.equal(g.upgrade(skill),false);}
 assert.equal(g.shield,9);g.pause();const t=g.time;g.tick(.05);assert.equal(g.time,t);g.pause();
 for(let stage=1;stage<=6;stage++){
