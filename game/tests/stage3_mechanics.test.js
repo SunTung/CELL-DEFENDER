@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict');
+const {Game,ENEMY_TYPES,STAGE_ENEMIES}=require('../web/game.js');
+assert.equal(ENEMY_TYPES.length,6);assert.equal(STAGE_ENEMIES.length,6);
+const g=new Game(()=>.5);g.start();g.upgrade('clone');g.upgrade('clone');g.tick(.05);
+for(let i=0;i<18;i++)g.tick(.05);
+assert.ok(g.bullets.some(b=>b.clone),'clones produce bullets');
+g.spawn('boss');g.bossFireClock=1.2;g.tick(.05);
+assert.ok(g.enemyShots.length>=3,'boss fires spread');
+const n=g.enemyShots.length;g.pause();g.tick(.05);assert.equal(g.enemyShots.length,n,'pause freezes bullets');g.pause();
+const before=g.hp;g.enemyShots=[{x:g.player.x,y:g.player.y,vx:0,vy:0}];g.tick(.05);assert.ok(g.hp<before,'enemy bullets damage player');
+console.log('stage3 clones, boss spread, pause, projectile damage: PASS');
